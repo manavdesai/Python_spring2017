@@ -8,6 +8,7 @@ Assignment 1 Comments:
 # Midterms 
 
 ### Question_1_Analysis_1
+
 Problem : Find out top 10 domains with highest outgoing traffic.
 Procedure : Scanned through sent box of every user and selected the recipients of those emails. After that, filtering the domain names after '@' in the recipient's email address, added the count corresponding to it. Sorted the data and picked up the top 10 from them. The graph represents top 10 domains which recieved emails from given set of enron users. Finally the data is saved into a csv file.
 -------------------------------------------------------------------
@@ -16,9 +17,13 @@ Problem : Find e-mails relevant to Enron's business when Jeffrey Skilling was a 
 Procedure : Used a set of words as a matching filter by comparing and wrote the results into a csv file
 -------------------------------------------------------------------
 ### Question_1_Analysis_3
+Problem : Find out the peak time for most of the mails sent by chairman Ken Lay
 
+Procedure: Checking the number of emails sent by Ken Lay. Analyzing the time of the day and the number of emails sent by Ken Lay on corresponding hour of the day. Generating csv file which contains this detail. We can observe that the highest number of mails sent by him was after the office hours. 
 -------------------------------------------------------------------
 ### Question_2_Analysis_1
+Problem :  Create folder structure on the basis of section name and Find out the most published topic in the Article for the year 2010
+Procedure : The data for article is not easy to retrieve directly. In order to overcome this, I initially created folder structure and saved all the files in different folders. This folder structure is based on the section name that is present in every article file. Further analysis includes the occurance of highest number of topics that were trending for the year 2010.
 
 -------------------------------------------------------------------
 ### Question_2_Analysis_2
