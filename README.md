@@ -1,4 +1,7 @@
 # desai_manav_spring2017
+Assignment 2 Comments:</br>
+->Good work </br>
+->Just a small error in writing the restaurant data to csv(restaurant name)</br>
 Assignment 1 Comments:
 ->Please do not print all text in a list!!
 ->only 26 characters
