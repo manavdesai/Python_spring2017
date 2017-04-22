@@ -4,7 +4,7 @@ src="https://cloud.githubusercontent.com/assets/25045817/25302244/09900832-2708-
 # Indian Premier League - OPEN DATA ANALYSIS
 ## Content
 * Introduction
-* Analysis-1 : Analysis on batsman
+* Analysis-1 : Analysis on batsmen
 * Analysis-2 : Comparison of Players
 * Analysis-3 : Analysis on bowlers
 * Analysis-4 : Team-based analysis
@@ -41,7 +41,7 @@ df_matches.head()
 
 ***************************************************************************************************************************************
 ***************************************************************************************************************************************
-## Analysis-1 : Analysis on batsman <img width="206" alt="bat" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307524/48f3c6e0-2770-11e7-8d96-3a17c55e7748.PNG">
+## Analysis-1 : Analysis on batsmen <img width="206" alt="bat" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307524/48f3c6e0-2770-11e7-8d96-3a17c55e7748.PNG">
 
 In this analysis, I have integrated the facts related to a batsman and how it relates to his performance. Considering the number of runs scored by the batsman, his performance has been tracked over the years. The number of FOURS and SIXES hit by a batsman is analyzed and also to consider the number of dot balls given by batsman.
 ### Analysis 1.1 : Top Run scorers
@@ -57,7 +57,7 @@ runs_df = runs_df.iloc[:10,:]
 ##### ~ V Kohli is the top run scorer amongst all followed by SK Raina.
 ##### ~ CH Gayle and DA Warner are highest run scorers in foreign players.
 ************************************************************************************************************************************
-### Analysis 1.2 : Performance of Top 5 Batman over the seasons
+### Analysis 1.2 : Performance of Top 5 Batsmen over the seasons
 #### Code
 ```python
 top=df_batsman.groupby(['season','batsman'])['batsman_runs'].sum().reset_index()
@@ -76,7 +76,7 @@ plt.show()
 ##### ~ CH Gayle had good performance from 2011 to 2013 but then showed a drop
 ##### ~ SK Raina and RG Sharma had nearly consistent performance all the seasons
 ************************************************************************************************************************************
-### Analysis 1.3 : Players with maximum number of 4's
+### Analysis 1.3 : Batsmen with maximum number of 4's
 #### Code
 ```python
 fours_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==4).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
@@ -89,7 +89,7 @@ fours_df.head()
 ### Conclusion 
 ##### ~  G Gambhir has hit maximum number of FOURS. Total of 422 Fours
 ************************************************************************************************************************************
-### Analysis 1.4 : Players with maximum number of 6's
+### Analysis 1.4 : Batsmen with maximum number of 6's
 #### Code
 ```python
 six_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==6).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
@@ -102,7 +102,7 @@ six_df.head()
 ### Conclusion 
 ##### ~ CH Gayle has hit maximum number of SIXES. Total 252 Sixes. 
 ************************************************************************************************************************************
-### Analysis 1.5 : Players with maximum number of Dot ball
+### Analysis 1.5 : Batsmen with maximum number of Dot ball
 ####  Code
 ```python
 dot_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==0).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
@@ -117,7 +117,7 @@ dot_df.head()
 
 ***************************************************************************************************************************************
 ***************************************************************************************************************************************
-## Analysis-2 : Comparison of players.
+## Analysis-2 : Comparison of players
 
 In this analysis, <img width="256" alt="dhoni" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307103/453f2ae6-2769-11e7-9833-0a01870b3232.PNG">
 I have compared the performances of two players and given the statistical data about their runs scored, the number of balls they faced and also the comparison based on the strike rate that they have over the seasons. This analysis is helpful if we want to make a comparison of the two players and conclude about their work. I have taken an instance of V kohli, who is the captain of Royal Challengers Bangalore AND MS Dhoni, who is the former captain of Chennai Super Kings and now playing for Pune Warriors. 
@@ -222,7 +222,7 @@ for each in top.patches:
 ##### ~ Maximum wickets occur because of 'Catches'
 ##### ~ Minimum wickets occur because of 'Hit wickets'
 
-### Analysis 3.4 : Analysis on EXTRAS
+### Analysis 3.4 : Analysis on EXTRA runs
 #### Code to integrate the wicket data by bowlers
 ```python
 extras=df_deliveries[['wide_runs','bye_runs','legbye_runs','noball_runs']].sum()
@@ -261,13 +261,13 @@ df_total_wins_per_city.head(10)
 <img width="603" alt="team_wins_in_cities" src="https://cloud.githubusercontent.com/assets/25045817/25307830/37d4a0d6-2776-11e7-802a-9998d6d27296.png">
 
 ### Conclusion
-##### ~ Rajasthan Royals have won the most number of matches
-##### ~ Deccan Chargers have won the least number of matches
 ##### ~ All the teams have won the most on their Home Grounds
 ##### ~ Royal Challengers Bangalore doesn't seem to be affected with their Home city. They have nearly equal number of wins in every city
+##### ~ Rajasthan Royals have won the most number of matches
+##### ~ Deccan Chargers have won the least number of matches
 
 
-### Analysis 4.2 : Teams which can handle pressure
+### Analysis 4.2 : Teams which managed to win under pressure
 #### Code
 ```python
 df_close = df_matches[((df_matches['win_by_runs']<10) & (df_matches['win_by_runs']>0)) 
@@ -281,7 +281,7 @@ df_close.head()
 ##### ~ Kings XI Punjab have handled their nerves in Pressure and won the games maximum number of times when the margin was less
 ##### ~ Pune Warriors, Kochi Tuskers Kerala and Gujarat Lions doesn't seem to handle pressure easily
 
-### Analysis 4.3 : Team wins by Big Margin
+### Analysis 4.3 : Team wins by Big Run Margin
 #### Code
 ```python
 df_big_margin = df_matches[((df_matches['win_by_runs']>=50) | (df_matches['win_by_wickets']>=7))]
@@ -314,7 +314,7 @@ df_toss
 ##### ~ Fielding first has been more of a preference
 
 
-### Analysis 5.2 : Toss Decisions across seasons
+### Analysis 5.2 : Decision across seasons by Toss winning captains
 
 <img width="658" alt="toss_decision_by_season" src="https://cloud.githubusercontent.com/assets/25045817/25308213/c5cd87ac-277d-11e7-8b61-00b2d7b3ec24.PNG">
 
@@ -322,7 +322,7 @@ df_toss
 ##### ~ The decision for batting or fielding varies largely across the seasons. 
 ##### ~ In 2016 though, the majority of toss winners opted to Field first, may be because they could have their targets set  and they can plan a strategy for batting.
 
-### Analysis 5.3 : Toss Winners over the seasons and their count
+### Analysis 5.3 : Toss Winners over the seasons 
 #### Code
 ```python
 top=df_matches['toss_winner'].value_counts().plot.bar(width=0.4, color= 'Orange')
@@ -347,7 +347,7 @@ for each in top.patches:
 <img width="600" alt="probability_of_winning_toss" src="https://cloud.githubusercontent.com/assets/25045817/25308246/5b9ad0b4-277e-11e7-9c0f-083428fb1679.PNG">
 
 ### Conclusion
-##### ~ the chance for winning a toss is highest for DC and it is lowest for PW.
+##### ~ the chance for winning a toss is highest for DC (Deccan Chargers) and it is lowest for PW (Pune Warriors).
 
 
 ### Analysis 5.5 : Probability of TOSS winner to also be a MATCH winner
