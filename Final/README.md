@@ -100,19 +100,3 @@ six_df.head()
 
 ### Conclusion 
 ##### ~ CH Gayle has hit maximum number of SIXES. Total 252 Sixes. 
-************************************************************************************************************************************
-### Analysis 1.5 : Players with maximum number of Dot balls
-#### Sample Code
-```python
-dot_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==0).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
-dot_df = dot_df.iloc[:10,:]
-dot_df.head()
-
-```
-<img width="498" alt="players_with_6s" src="https://cloud.githubusercontent.com/assets/25045817/25303101/0bb24c94-271a-11e7-865e-72490cb8fc14.PNG">
-
-### Conclusion 
-##### ~ CH Gayle has hit maximum number of SIXES. Total 252 Sixes. 
-
-
-
