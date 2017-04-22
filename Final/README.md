@@ -173,7 +173,7 @@ df_players_comparison_by_strike_rate.head()
 
 ***************************************************************************************************************************************
 ***************************************************************************************************************************************
-## Analysis-3 : Analysis on Bowlers. <img width="177" alt="bowlerds" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307387/2ef02e20-276e-11e7-8f78-b2587161ea6d.PNG">
+## Analysis-3 : Analysis on Bowlers <img width="177" alt="bowlerds" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307387/2ef02e20-276e-11e7-8f78-b2587161ea6d.PNG">
 
 Bowlers play an important role in cricket. While batsman are for scoring against opponent team, Bowlers are for dismissing players in the opponent team
 In this analysis, I have presented the performances of the bowlers and given the statistical data about the wickets taken, the average economy by them, reasons for the wicket and also the extras that they have given over the seasons. This analysis is helpful if we want to make a decision about selecting the right candidate for bowling according to the scenarios. 
@@ -236,7 +236,7 @@ extras=df_deliveries[['wide_runs','bye_runs','legbye_runs','noball_runs']].sum()
 ***************************************************************************************************************************************
 ***************************************************************************************************************************************
 
-## Analysis-4 : Team-based Analysis. <img width="400" alt="teams" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307692/30ad71b4-2773-11e7-8688-824577fd1d6b.PNG">
+## Analysis-4 : Team-based Analysis <img width="400" alt="teams" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307692/30ad71b4-2773-11e7-8688-824577fd1d6b.PNG">
 Batsman and bowlers work together in a team. At the end, it's the team work which is responsible for victory or defeat. 
 In this analysis, I have presented the performances of the team as whole. Playing on their home grounds to different places, I have collected the information about their win in different cities. 
 
@@ -296,7 +296,7 @@ df_big_margin.groupby("winner")["id"].count()
 ***************************************************************************************************************************************
 ***************************************************************************************************************************************
 
-## Analysis-5 : Toss-based Analysis. <img width="100" alt="toss" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25308075/1533665c-277b-11e7-90e0-f8acf33339a2.PNG">
+## Analysis-5 : Toss-based Analysis <img width="100" alt="toss" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25308075/1533665c-277b-11e7-90e0-f8acf33339a2.PNG">
 In this analysis, I have focussed on the decisions made by team after winning the toss. A toss gives the winner a priority to decide what he wants to do first, Bat or field?
 Analysis has been made on the decisions taken by the teams to bat or field first as the teams might have certain strategy of approaching the game. 
 In this analysis, I have presented the facts of toss decisions over the seasons, toss winners and their count, probability of winning a toss. Also, there is a belief that TOSS winner is a MATCH winner. Let's see how true it is !
