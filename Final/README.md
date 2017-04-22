@@ -1,5 +1,5 @@
-
-![ipl-logo](https://cloud.githubusercontent.com/assets/25045817/25302244/09900832-2708-11e7-9585-279805797ce8.png)
+<img width="550" alt="bat"
+src="https://cloud.githubusercontent.com/assets/25045817/25302244/09900832-2708-11e7-9585-279805797ce8.png">
 
 # Indian Premier League - OPEN DATA ANALYSIS
 ## Content
@@ -41,7 +41,7 @@ df_matches.head()
 
 ***************************************************************************************************************************************
 ***************************************************************************************************************************************
-## Analysis-1 : Analysis on batsman
+## Analysis-1 : Analysis on batsman <img width="206" alt="bat" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307524/48f3c6e0-2770-11e7-8d96-3a17c55e7748.PNG">
 
 In this analysis, I have integrated the facts related to a batsman and how it relates to his performance. Considering the number of runs scored by the batsman, his performance has been tracked over the years. The number of FOURS and SIXES hit by a batsman is analyzed and also to consider the number of dot balls given by batsman.
 ### Analysis 1.1 : Top Run scorers
@@ -170,3 +170,66 @@ df_players_comparison_by_strike_rate.head()
 
 ### Conclusion
 ##### ~ Strike rate by MS Dhoni has nearly been more than V Kohli.
+
+***************************************************************************************************************************************
+***************************************************************************************************************************************
+## Analysis-3 : Analysis on Bowlers. <img width="177" alt="bowlerds" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307387/2ef02e20-276e-11e7-8f78-b2587161ea6d.PNG">
+
+Bowlers play an important role in cricket. While batsman are for scoring against opponent team, Bowlers are for dismissing players in the opponent team
+In this analysis, I have presented the performances of the bowlers and given the statistical data about the wickets taken, the average economy by them, reasons for the wicket and also the extras that they have given over the seasons. This analysis is helpful if we want to make a decision about selecting the right candidate for bowling according to the scenarios. 
+
+### Analysis 3.1 : Highest Wicket Takers
+#### Sample Code to integrate the wicket data by bowlers
+```python
+wicket_kinds = ["bowled", "caught", "lbw", "stumped", "caught and bowled", "hit wicket"] 
+check=df_deliveries[df_deliveries["dismissal_kind"].isin(wicket_kinds)]
+```
+<img width="531" alt="highest_wicket_takers" src="https://cloud.githubusercontent.com/assets/25045817/25307460/49a72cf4-276f-11e7-955a-70462c25c658.PNG">
+
+### Conclusion <img width="215" alt="malinga" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307476/8a0340ee-276f-11e7-8876-5e35833cb799.PNG">
+
+##### ~ SL Malinga and DJ Bravo are 2 foreign bowlers with highest Wicket takers
+##### ~ A Mishra and PP Chawla are 2 Indian bowlers with highest Wicket takers
+##### ~ DW Steyne and Z Khan have taken equal number of wickets
+
+### Analysis 3.2 : Analysis by Economy
+#### Sample Code to integrate the wicket data by bowlers
+```python
+df_over=df_deliveries.groupby(['bowler']).sum()
+df_over['total balls']=df_deliveries['bowler'].value_counts()
+df_over['overs']=(df_over['total balls']//6) # because each over has 6 balls
+df_over[df_over['overs']>200].sort_values(by='overs',ascending=0)[[14]].head(5).T
+df_over['economy']=(df_over['total_runs']/(df_over['overs']))
+df_over[(df_over['overs']>300)].sort_values('economy')[:10].economy.reset_index().T
+```
+<img width="519" alt="average_economy" src="https://cloud.githubusercontent.com/assets/25045817/25307554/c072385a-2770-11e7-873f-702ebfd16cdf.PNG">
+
+### Conclusion
+##### ~ The average economy rate is between 8.5 - 9
+
+### Analysis 3.3 : Reasons for wicket <img width="158" alt="reasons_for_wickets" align="right"  src="https://cloud.githubusercontent.com/assets/25045817/25307590/9e9991f0-2771-11e7-8652-0be41c3d4793.png">
+#### Sample Code to integrate the wicket data by bowlers
+```python
+wicket=["run out","bowled", "caught", "lbw", "stumped", "caught and bowled", "hit wicket"]
+check=df_deliveries[df_deliveries["dismissal_kind"].isin(wicket)]
+top=check.dismissal_kind.value_counts()[:10].plot.bar(width=0.7,color='#58D68D')
+for each in top.patches:
+    top.annotate(format(each.get_height()), (each.get_x()+0.1, each.get_height()+1))
+```
+<img width="508" alt="reasons_for_wickets" src="https://cloud.githubusercontent.com/assets/25045817/25307565/0d91f83c-2771-11e7-8bab-5cdefecdf136.PNG">
+
+### Conclusion
+##### ~ Maximum wickets occur because of 'Catches'
+##### ~ Minimum wickets occur because of 'Hit wickets'
+
+### Analysis 3.4 : Analysis on EXTRAS
+#### Sample Code to integrate the wicket data by bowlers
+```python
+extras=df_deliveries[['wide_runs','bye_runs','legbye_runs','noball_runs']].sum()
+```
+<img width="450" alt="percentage_of_extras" src="https://cloud.githubusercontent.com/assets/25045817/25307574/3c49ad78-2771-11e7-94d9-8167ec0cfc8a.PNG">
+
+### Conclusion
+##### ~ Wide Runs is biggest reason for EXTRAS given
+##### ~ No Ball Runs is least reason for EXTRAS given
+
