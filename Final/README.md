@@ -233,3 +233,62 @@ extras=df_deliveries[['wide_runs','bye_runs','legbye_runs','noball_runs']].sum()
 ##### ~ Wide Runs is biggest reason for EXTRAS given
 ##### ~ No Ball Runs is least reason for EXTRAS given
 
+***************************************************************************************************************************************
+***************************************************************************************************************************************
+
+## Analysis-4 : Team-based Analysis. <img width="400" alt="teams" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307692/30ad71b4-2773-11e7-8688-824577fd1d6b.PNG">
+Batsman and bowlers work together in a team. At the end, it's the team work which is responsible for victory or defeat. 
+In this analysis, I have presented the performances of the team as whole. Playing on their home grounds to different places, I have collected the information about their win in different cities. 
+
+The analysis on teams that can handle pressure (ie.Win by less than 10 Runs or Win by less than 2 Wicket) is done which reflects their efficiency of team work in critical situations. 
+
+Also, The analysis on teams which won by sheer dominance or by big margin is done ( ie. Win by more than 50 Runs or Win by more than 7 Wickets) which reflects how strong is the team against the losing team.
+
+#### Sample Code to calculate the aggregate od matches
+```python
+df_aggregates = pd.merge(df_matches, df_all_matches_score, left_on='id', right_on= 'match_id', how='outer')
+df_aggregates.head(2)
+
+```
+
+### Analysis 4.1 : Team wins in different cities
+#### Sample Code
+```python
+df_total_wins_per_city = df_aggregates[df_aggregates['season'] == 2008].groupby(['winner','city'])['match_id'].count().unstack()
+df_total_wins_per_city.head(10)
+
+```
+<img width="603" alt="team_wins_in_cities" src="https://cloud.githubusercontent.com/assets/25045817/25307830/37d4a0d6-2776-11e7-802a-9998d6d27296.png">
+
+### Conclusion
+##### ~ Rajasthan Royals have won the most number of matches
+##### ~ Deccan Chargers have won the least number of matches
+##### ~ All the teams have won the most on their Home Grounds
+##### ~ Royal Challengers Bangalore doesn't seem to be affected with their Home city. They have nearly equal number of wins in every city
+
+
+### Analysis 4.2 : Teams which can handle pressure
+#### Sample Code
+```python
+df_close = df_matches[((df_matches['win_by_runs']<10) & (df_matches['win_by_runs']>0)) 
+                                  | ((df_matches['win_by_wickets']<=2) & (df_matches['win_by_wickets']>0))]
+df_close.head()
+
+```
+<img width="481" alt="team_wins_under_pressure" src="https://cloud.githubusercontent.com/assets/25045817/25307944/56692a7e-2778-11e7-94a2-4b6aea3c32bf.PNG">
+
+### Conclusion
+##### ~ Kings XI Punjab have handled their nerves in Pressure and won the games maximum number of times when the margin was less
+##### ~ Pune Warriors, Kochi Tuskers Kerala and Gujarat Lions doesn't seem to handle pressure easily
+
+### Analysis 4.3 : Team wins by Big Margin
+#### Sample Code
+```python
+df_big_margin = df_matches[((df_matches['win_by_runs']>=50) | (df_matches['win_by_wickets']>=7))]
+df_big_margin.head(2)
+df_big_margin.groupby("winner")["id"].count()
+```
+<img width="506" alt="team_wins_big_margin" src="https://cloud.githubusercontent.com/assets/25045817/25307975/dd638150-2778-11e7-8ac2-55a6914fa841.PNG">
+
+### Conclusion
+##### ~ Royal Challengers Bangalore and Chennai Super Kings have won the matches with sheer dominance.
