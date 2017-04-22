@@ -40,6 +40,7 @@ df_matches.head()
 ```
 
 ***************************************************************************************************************************************
+***************************************************************************************************************************************
 ## Analysis-1 : Analysis on batsman
 
 In this analysis, I have integrated the facts related to a batsman and how it relates to his performance. Considering the number of runs scored by the batsman, his performance has been tracked over the years. The number of FOURS and SIXES hit by a batsman is analyzed and also to consider the number of dot balls given by batsman.
@@ -100,3 +101,16 @@ six_df.head()
 
 ### Conclusion 
 ##### ~ CH Gayle has hit maximum number of SIXES. Total 252 Sixes. 
+************************************************************************************************************************************
+### Analysis 1.5 : Players with maximum number of Dot ball
+#### Sample Code
+```python
+dot_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==0).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
+dot_df = dot_df.iloc[:10,:]
+dot_df.head()
+
+```
+<img width="430" alt="players_with_dot_balls" src="https://cloud.githubusercontent.com/assets/25045817/25306956/6c55c7fa-2766-11e7-9501-82c7d4c2b052.PNG">
+
+### Conclusion
+##### ~ Surprisingly, V Kohli, who has scored the maximum runs is also the player with maximum DOT balls 
