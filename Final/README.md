@@ -74,4 +74,45 @@ plt.show()
 ##### ~ V Kohli shows a considerable improved performance in the year 2016
 ##### ~ CH Gayle had good performance from 2011 to 2013 but then showed a drop
 ##### ~ SK Raina and RG Sharma had nearly consistent performance all the seasons
+************************************************************************************************************************************
+### Analysis 1.3 : Players with maximum number of 4's
+#### Sample Code
+```python
+fours_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==4).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
+fours_df = fours_df.iloc[:10,:]
+fours_df.head()
+
+```
+<img width="507" alt="players_with_4s" src="https://cloud.githubusercontent.com/assets/25045817/25302971/4eef6962-2718-11e7-826a-f2b8f4accc4e.PNG">
+
+### Conclusion 
+##### ~  G Gambhir has hit maximum number of FOURS. Total of 422 Fours
+************************************************************************************************************************************
+### Analysis 1.4 : Players with maximum number of 6's
+#### Sample Code
+```python
+six_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==6).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
+six_df = six_df.iloc[:10,:]
+six_df.head()
+
+```
+<img width="498" alt="players_with_6s" src="https://cloud.githubusercontent.com/assets/25045817/25303101/0bb24c94-271a-11e7-865e-72490cb8fc14.PNG">
+
+### Conclusion 
+##### ~ CH Gayle has hit maximum number of SIXES. Total 252 Sixes. 
+************************************************************************************************************************************
+### Analysis 1.5 : Players with maximum number of Dot balls
+#### Sample Code
+```python
+dot_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==0).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
+dot_df = dot_df.iloc[:10,:]
+dot_df.head()
+
+```
+<img width="498" alt="players_with_6s" src="https://cloud.githubusercontent.com/assets/25045817/25303101/0bb24c94-271a-11e7-865e-72490cb8fc14.PNG">
+
+### Conclusion 
+##### ~ CH Gayle has hit maximum number of SIXES. Total 252 Sixes. 
+
+
 
