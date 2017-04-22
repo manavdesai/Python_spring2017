@@ -114,3 +114,59 @@ dot_df.head()
 
 ### Conclusion
 ##### ~ Surprisingly, V Kohli, who has scored the maximum runs is also the player with maximum DOT balls 
+
+***************************************************************************************************************************************
+***************************************************************************************************************************************
+## Analysis-2 : Comparison of players.
+
+In this analysis, <img width="256" alt="dhoni" align="right" src="https://cloud.githubusercontent.com/assets/25045817/25307103/453f2ae6-2769-11e7-9833-0a01870b3232.PNG">
+I have compared the performances of two players and given the statistical data about their runs scored, the number of balls they faced and also the comparison based on the strike rate that they have over the seasons. This analysis is helpful if we want to make a comparison of the two players and conclude about their work. I have taken an instance of V kohli, who is the captain of Royal Challengers Bangalore AND MS Dhoni, who is the former captain of Chennai Super Kings and now playing for Pune Warriors. 
+
+
+Both these players are the leads in Indian Cricket Team. Interesting part is to see how well is their IPL Career. Let's take a glance. 
+##### ( Virat Kohli vs MS Dhoni )
+
+#### Sample Code to integrate the data of Virat Kohli and MS Dhoni
+```python
+inputstring = 'V Kohli'
+inputstring1 = 'MS Dhoni'
+for i in [inputstring1, inputstring]:
+      df_new = df_batsman.ix[df_batsman.ix[:,"batsman"].str.contains(str(i))]
+df_player_comparison = df_batsman.ix[df_batsman.ix[:,"batsman"].str.contains(str(inputstring)) | df_batsman.ix[:,"batsman"].str.contains(str(inputstring1))]
+```
+
+
+### Analysis 2.1 : Comparison by Runs
+#### Sample Code to integrate the runs by the Batsman
+```python
+df_players_comparison_by_runs = df_player_comparison.groupby(['season', 'batting_team', 'batsman'])['batsman_runs'].sum().reset_index()
+df_players_comparison_by_runs.head(10)
+```
+<img width="674" alt="comparison_by runs" src="https://cloud.githubusercontent.com/assets/25045817/25307237/6685c32a-276b-11e7-8a68-58b7cf8d3d99.PNG">
+
+### Conclusion
+##### ~  In 2008 and 2009, MS Dhoni has scored more runs than V Kohli
+##### ~ From 2010, V Kohli has improved the performance and scored more than MS Dhoni.
+
+### Analysis 2.2 : Comparison by Balls Faced
+#### Sample Code to integrate the balls faced by the Batsman
+```python
+df_players_comparison_by_balls_faced = df_player_comparison.groupby(['season', 'batting_team', 'batsman'])['balls_faced'].sum().reset_index()
+df_players_comparison_by_balls_faced(10)
+```
+<img width="675" alt="comparison_by_balls_faced" src="https://cloud.githubusercontent.com/assets/25045817/25307255/af7f294a-276b-11e7-9d89-f488de2bea17.PNG">
+
+### Conclusion
+##### ~ MS Dhoni, nearly faced same number of balls in every season
+##### ~ The number of balls faced by V Kohli increased over the seasons and in 2016, he has faced most balls.
+
+### Analysis 2.3 : Comparison by Strike Rate
+#### Sample Code to integrate the Strike Rate by the Batsman
+```python
+df_players_comparison_by_strike_rate = df_player_comparison.groupby(['season', 'batting_team', 'batsman'])['Strike-Rate'].mean().reset_index()
+df_players_comparison_by_strike_rate.head()
+```
+<img width="624" alt="comparison_by_strikerate" src="https://cloud.githubusercontent.com/assets/25045817/25307260/cfeee1a2-276b-11e7-83cb-71aa53e2219d.PNG">
+
+### Conclusion
+##### ~ Strike rate by MS Dhoni has nearly been more than V Kohli.
