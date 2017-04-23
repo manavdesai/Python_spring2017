@@ -15,7 +15,7 @@ The Indian Premier League (IPL) is a professional Twenty20 cricket league in Ind
 
 Using the dataset of this cricket league, I have performed analysis and asnwered various questions that may be helpful in future for the prediction or to determine the consistency of a player, team or a match. 
 
-This data contains the facts across all 8 seasons (2008 - 2016). 
+This data contains the facts across all 8 seasons (2008 - 2016) and all the analysis are for the records over the season.
 
 To support this, I have presented the data in terms of different graphs to better visualize the flow and existence of the data. 
 
