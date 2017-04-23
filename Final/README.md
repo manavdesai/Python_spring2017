@@ -47,6 +47,7 @@ df_matches.head()
 
 In this analysis, I have integrated the facts related to a batsman and how it relates to his performance. Considering the number of runs scored by the batsman, his performance has been tracked over the years. The number of FOURS and SIXES hit by a batsman is analyzed and also to consider the number of dot balls given by batsman.
 ### Analysis 1.1 : Top Run scorers
+Using deliveries.csv, integrated all the runs by the batsmen and displayed top 10 of them. 
 #### Code
 ```python
 runs_df = df_deliveries.groupby('batsman')['batsman_runs'].agg('sum').reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
@@ -60,6 +61,7 @@ runs_df = runs_df.iloc[:10,:]
 ##### ~ CH Gayle and DA Warner are highest run scorers in foreign players.
 ************************************************************************************************************************************
 ### Analysis 1.2 : Performance of Top 5 Batsmen 
+using batsman dataframe created above, displayed the performance of batsmen over all the years.
 #### Code
 ```python
 top=df_batsman.groupby(['season','batsman'])['batsman_runs'].sum().reset_index()
@@ -79,6 +81,7 @@ plt.show()
 ##### ~ SK Raina and RG Sharma had nearly consistent performance all the seasons
 ************************************************************************************************************************************
 ### Analysis 1.3 : Batsmen who have hit maximum number of FOURS 
+using deliveries.csv, grouped the batsmen data by the number of FOURS hit by them and sorted in descending order.
 #### Code
 ```python
 fours_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==4).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
@@ -92,6 +95,7 @@ fours_df.head()
 ##### ~  G Gambhir has hit maximum number of FOURS. Total of 422 Fours
 ************************************************************************************************************************************
 ### Analysis 1.4 : Batsmen who have hit maximum number of SIXES 
+using deliveries.csv, grouped the batsmen data by the number of SIXES hit by them and sorted in descending order.
 #### Code
 ```python
 six_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==6).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
@@ -105,6 +109,7 @@ six_df.head()
 ##### ~ CH Gayle has hit maximum number of SIXES. Total 252 Sixes. 
 ************************************************************************************************************************************
 ### Analysis 1.5 : Batsmen who played maximum number of Dot balls
+using deliveries.csv, grouped the batsmen data by the number of DOT balls played by them and sorted in descending order.
 ####  Code
 ```python
 dot_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==0).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
