@@ -15,6 +15,8 @@ The Indian Premier League (IPL) is a professional Twenty20 cricket league in Ind
 
 Using the dataset of this cricket league, I have performed analysis and asnwered various questions that may be helpful in future for the prediction or to determine the consistency of a player, team or a match. 
 
+This data contains the facts across all 8 seasons (2008 - 2016). 
+
 To support this, I have presented the data in terms of different graphs to better visualize the flow and existence of the data. 
 
 In this Project, I have explored the data of Indian Premier League (IPL) which includes 2 files:
@@ -57,7 +59,7 @@ runs_df = runs_df.iloc[:10,:]
 ##### ~ V Kohli is the top run scorer amongst all followed by SK Raina.
 ##### ~ CH Gayle and DA Warner are highest run scorers in foreign players.
 ************************************************************************************************************************************
-### Analysis 1.2 : Performance of Top 5 Batsmen over the seasons
+### Analysis 1.2 : Performance of Top 5 Batsmen 
 #### Code
 ```python
 top=df_batsman.groupby(['season','batsman'])['batsman_runs'].sum().reset_index()
@@ -76,7 +78,7 @@ plt.show()
 ##### ~ CH Gayle had good performance from 2011 to 2013 but then showed a drop
 ##### ~ SK Raina and RG Sharma had nearly consistent performance all the seasons
 ************************************************************************************************************************************
-### Analysis 1.3 : Batsmen with maximum number of 4's
+### Analysis 1.3 : Batsmen who have hit maximum number of FOURS 
 #### Code
 ```python
 fours_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==4).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
@@ -89,7 +91,7 @@ fours_df.head()
 ### Conclusion 
 ##### ~  G Gambhir has hit maximum number of FOURS. Total of 422 Fours
 ************************************************************************************************************************************
-### Analysis 1.4 : Batsmen with maximum number of 6's
+### Analysis 1.4 : Batsmen who have hit maximum number of SIXES 
 #### Code
 ```python
 six_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==6).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
@@ -102,7 +104,7 @@ six_df.head()
 ### Conclusion 
 ##### ~ CH Gayle has hit maximum number of SIXES. Total 252 Sixes. 
 ************************************************************************************************************************************
-### Analysis 1.5 : Batsmen with maximum number of Dot ball
+### Analysis 1.5 : Batsmen who played maximum number of Dot balls
 ####  Code
 ```python
 dot_df = df_deliveries.groupby('batsman')['batsman_runs'].agg(lambda x: (x==0).sum()).reset_index().sort_values(by='batsman_runs', ascending=False).reset_index(drop=True)
@@ -136,7 +138,7 @@ df_player_comparison = df_batsman.ix[df_batsman.ix[:,"batsman"].str.contains(str
 ```
 
 
-### Analysis 2.1 : Comparison by Runs
+### Analysis 2.1 : Comparison by Runs 
 #### Code to integrate the runs by the Batsman
 ```python
 df_players_comparison_by_runs = df_player_comparison.groupby(['season', 'batting_team', 'batsman'])['batsman_runs'].sum().reset_index()
@@ -178,7 +180,7 @@ df_players_comparison_by_strike_rate.head()
 Bowlers play an important role in cricket. While batsman are for scoring against opponent team, Bowlers are for dismissing players in the opponent team
 In this analysis, I have presented the performances of the bowlers and given the statistical data about the wickets taken, the average economy by them, reasons for the wicket and also the extras that they have given over the seasons. This analysis is helpful if we want to make a decision about selecting the right candidate for bowling according to the scenarios. 
 
-### Analysis 3.1 : Highest Wicket Takers
+### Analysis 3.1 : Highest Wicket Takers 
 #### Code to integrate the wicket data by bowlers
 ```python
 wicket_kinds = ["bowled", "caught", "lbw", "stumped", "caught and bowled", "hit wicket"] 
@@ -192,7 +194,7 @@ check=df_deliveries[df_deliveries["dismissal_kind"].isin(wicket_kinds)]
 ##### ~ A Mishra and PP Chawla are 2 Indian bowlers with highest Wicket takers
 ##### ~ DW Steyne and Z Khan have taken equal number of wickets
 
-### Analysis 3.2 : Analysis by Economy
+### Analysis 3.2 : Analysis by Economy over the season
 #### Code to integrate the wicket data by bowlers
 ```python
 df_over=df_deliveries.groupby(['bowler']).sum()
@@ -322,7 +324,7 @@ df_toss
 ##### ~ The decision for batting or fielding varies largely across the seasons. 
 ##### ~ In 2016 though, the majority of toss winners opted to Field first, may be because they could have their targets set  and they can plan a strategy for batting.
 
-### Analysis 5.3 : Toss Winners over the seasons 
+### Analysis 5.3 : Toss Winners  
 #### Code
 ```python
 top=df_matches['toss_winner'].value_counts().plot.bar(width=0.4, color= 'Orange')
@@ -335,7 +337,7 @@ for each in top.patches:
 ##### ~ Mumbai Indians have the higest TOSS wins followed by Kolkata Knight Riders. 
 ##### ~ Pune Supergiants have the lowest wins as they have played the lowest matches also.
 
-### Analysis 5.4 : Probability of Winning the toss
+### Analysis 5.4 : Probability of Winning the toss 
 #### Code
 ```python
 winner=df_matches['toss_winner'].value_counts()
@@ -350,7 +352,7 @@ for each in top.patches:
 ##### ~ the chance for winning a toss is highest for DC (Deccan Chargers) and it is lowest for PW (Pune Warriors).
 
 
-### Analysis 5.5 : Probability of TOSS winner to also be a MATCH winner
+### Analysis 5.5 : Probability of TOSS winner to also be a MATCH winner 
 #### Code
 ```python
 decision=df_matches[df_matches['toss_winner']==df_matches['winner']]
